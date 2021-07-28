@@ -4,27 +4,26 @@ PROJECT="website"
 STAGE="dev"
 REGION="eu-central-1"
 
-
 echo ' '
 echo ' Deploying log stack'
 echo ' '
 
 COMPONENT="parametrized"
-STACK="homework-param-log-bucket"
-TEMPLATE="homework-param-log-bucket"
-PARAMETERS="homework-param-log-bucket"
+STACK="homework-log"
+TEMPLATE="homework-log-bucket"
+PARAMETERS="homework-log-bucket"
 
 
 TEMPLATE_FILE="$PROJECT/$COMPONENT/templates/$TEMPLATE.yaml"
 PARAM_FILE="$PROJECT/$COMPONENT/parameters/$PARAMETERS-$STAGE.json"
 
 
-echo "TEMPLATE_FILE=$TEMPLATE_FILE"
-echo "PARAM_FILE=$PARAM_FILE"
+echo "TEMPLATE_FILE= $TEMPLATE_FILE"
+echo "PARAM_FILE= $PARAM_FILE"
 
 
 PARAMS=$(cat $PARAM_FILE | jq -jr 'map("\(.ParameterKey)=\(.ParameterValue)") | join (" ")')
-echo "PARAMS=$PARAMS"
+echo "PARAMS= $PARAMS"
 echo ' '
 
 deploy="aws cloudformation deploy \
@@ -48,9 +47,9 @@ echo ' '
 
 
 COMPONENT="parametrized"
-STACK="homework-param-website"
-TEMPLATE="homework-param-website"
-PARAMETERS="homework-param-website"
+STACK="homework-website"
+TEMPLATE="homework-website"
+PARAMETERS="homework-website"
 
 
 TEMPLATE_FILE="$PROJECT/$COMPONENT/templates/$TEMPLATE.yaml"
@@ -73,9 +72,6 @@ deploy2="aws cloudformation deploy \
     --tags Project=$PROJECT Stage=$STAGE Component=$COMPONENT"
 
 echo $deploy2
-
-
-
 $deploy2
 
 

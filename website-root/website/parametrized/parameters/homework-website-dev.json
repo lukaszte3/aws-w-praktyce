@@ -13,6 +13,6 @@
     },
     {
         "ParameterKey": "LogBucketName",
-        "ParameterValue": "/website/dev/parametrized/log-bucket/name"
+        "ParameterValue": "/website/dev/parametrized/homework-log-bucket/name"
     }
 ]

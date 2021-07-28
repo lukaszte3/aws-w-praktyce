@@ -24,7 +24,7 @@ Resources:
       AccessControl:  LogDeliveryWrite
       Tags:
         - Key: Name
-          Value: !Sub ${Project}-${Stage}-${Component}-log-bucket
+          Value: !Sub ${Project}-${Stage}-${Component}-homework-log-bucket
 
   S3LogBucketNameParam:
       Type: AWS::SSM::Parameter
@@ -32,10 +32,10 @@ Resources:
         Type: String
         Description: !Sub Stores ${Project}-${Stage}-${Component} Log Bucket Name
         Tier: Standard
-        Name: !Sub /${Project}/${Stage}/${Component}/log-bucket/name
+        Name: !Sub /${Project}/${Stage}/${Component}/homework-log-bucket/name
         Value: !Ref S3LogBucket
         Tags:
-          Name: !Sub ${Project}-${Stage}-${Component}-log-bucket-name
+          Name: !Sub ${Project}-${Stage}-${Component}-homework-log-bucket-name
 
 Outputs:
   LogBucketName:
